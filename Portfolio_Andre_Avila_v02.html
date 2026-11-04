@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>André Ávila • Edição de vídeo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--tex-opacity:.8;--black:#000;--char:#1a1a1a;--white:#fff;--mute:rgba(255,255,255,.6);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--black);color:var(--white);font-family:Rubik,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;height:76px;background:var(--black);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 48px}
+header nav,header .soc{display:flex;gap:26px;font-size:15px;text-transform:uppercase;letter-spacing:.04em}
+header .soc{justify-content:flex-end;gap:22px;align-items:center}
+.soc svg{width:22px;height:22px;fill:currentColor;display:block}
+.soc svg.ig{fill:none;stroke:currentColor;stroke-width:2}
+header a{opacity:.75;transition:opacity .2s}header a:hover,header a.on{opacity:1}
+.logo{display:block;line-height:0;opacity:1!important}
+.logo img{height:46px;width:auto;max-width:220px;object-fit:contain;display:block}
+.logo img[hidden]{display:none}
+@media(max-width:700px){.logo img{height:34px;max-width:96px}}
+.hero{position:relative;height:max(380px,66vh);height:max(380px,66svh);overflow:hidden;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;}
+.ph{position:absolute;inset:0;opacity:.9;background:linear-gradient(120deg,#ff3d5a,#3b2bff,#00c9a7,#ffb300);background-size:300% 300%;animation:shift 16s ease-in-out infinite}
+@keyframes shift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+#vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;display:none}
+.shade{position:absolute;inset:0;background:rgba(0,0,0,.38)}
+.tex{position:absolute;inset:0;width:100%;height:100%;opacity:var(--tex-opacity);pointer-events:none}
+.hero>*:not(#vid):not(.ph):not(.shade):not(.tex){position:relative;z-index:2}
+h1{font-size:clamp(30px,4.2vw,64px);line-height:1;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.sub{font-size:clamp(14px,1.5vw,17px);margin:0 0 20px;font-weight:400; letter-spacing:-.02em}
+.btn{display:inline-block;background:var(--white);color:var(--black);padding:13px 28px;font-weight:700;font-size:clamp(13px,1.2vw,16px);transition:transform .2s}
+.btn:hover{transform:scale(1.1)}
+section{padding:84px 48px}
+#work{background:var(--black)}
+#about{background:var(--char)}
+#contact{background:var(--black)}
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 32px;max-width:1500px;margin:0 auto}
+.th{position:relative;aspect-ratio:16/9;background:#161616;border:2px solid #2a2a2a;overflow:hidden;transition:border-color .2s}
+.card:hover .th{border-color:var(--white)}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:56px 18px 16px;background:linear-gradient(to top,rgba(0,0,0,.88),rgba(0,0,0,0))}
+.card h3{margin:0 0 4px;font-size:20px;font-weight:500}
+.card p{margin:0;font-size:14px;color:rgba(255,255,255,.75)}
+.in{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:32px}
+.in h2{margin:0;font-size:15px;text-transform:uppercase;letter-spacing:.14em;color:var(--mute);font-weight:500}
+.in p{margin:0 0 16px;font-size:clamp(20px,2.4vw,34px);line-height:1.3;max-width:860px}
+.in .m{color:var(--mute);font-size:clamp(15px,1.5vw,19px)}
+/* ABOUT com foto */
+.about-body{display:grid;grid-template-columns:1fr clamp(220px,24vw,340px);gap:clamp(28px,4vw,56px);align-items:start}
+.about-body p:last-child{margin-bottom:0}
+.foto{position:relative;isolation:isolate}
+.foto::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid rgba(255,255,255,.28);z-index:-1}
+.foto-in{position:relative;aspect-ratio:4/5;background:#161616;border:2px solid #2a2a2a;overflow:hidden}
+.foto-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.foto-in img[hidden]{display:none}
+@media(max-width:900px){.about-body{grid-template-columns:1fr}.foto{order:-1;max-width:320px;margin-bottom:14px}}
+.links{display:flex;gap:26px;flex-wrap:wrap;font-size:18px}
+.links a{border-bottom:2px solid var(--white)}
+footer{background:var(--char);padding:26px 48px;display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
+.top{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;width:48px;height:48px;border-radius:50%;background:var(--white);color:var(--black);display:grid;place-items:center;font-size:22px;font-weight:700}
+.modal{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.92);display:none;place-items:center;padding:24px}.modal.open{display:grid}.box{width:min(1100px,100%);aspect-ratio:16/9}.box iframe{width:100%;height:100%;border:0}.mx{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:20px;background:none;border:0;color:#fff;font-size:38px;cursor:pointer}
+@media(max-width:1000px){.work{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){header{padding:0 16px;grid-template-columns:1fr auto 1fr}header nav{gap:12px;font-size:12px}header .soc{display:none}section{padding:56px 18px}.work{grid-template-columns:1fr}.in{grid-template-columns:1fr}footer{padding:22px 18px;flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+<header>
+  <nav><a class="on" href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  <!-- LOGO: a imagem é definida em LOGO_SRC, no bloco CONFIGURAÇÃO (no <script>, mais abaixo). O "AA" em SVG é só o reserva. -->
+  <a class="logo" href="#top" aria-label="André Ávila"><img id="logo-img" alt="André Ávila" hidden><svg id="logo-fallback" width="46" height="46" viewBox="0 0 46 46"><rect width="46" height="46" rx="12" fill="#fff"/><text x="23" y="31" text-anchor="middle" font-family="Rubik,sans-serif" font-weight="700" font-size="22" font-style="italic" fill="#000">AA</text></svg></a>
+  <div class="soc">
+  <a href="#" aria-label="Instagram"><svg class="ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+  <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a href="#" aria-label="Vimeo"><svg viewBox="0 0 24 24"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.493 4.797l-.013.01z"/></svg></a>
+  <!-- <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a></div> 
+  -->
+</header>
+
+<div class="hero" id="top">
+  <div class="ph"></div><video id="vid" muted loop playsinline autoplay></video>
+  <div class="shade"></div><canvas class="tex"></canvas>
+  <h1>ANDRÉ ÁVILA</h1>
+  <p class="sub">FILM EDITING • MOTION DESIGN • POST PRODUCTION</p>
+  <a class="btn" href="#" id="demo">DEMOREEL</a>
+</div>
+
+<section id="work"><div class="work" id="reel"	></div></section>
+
+<section id="about"><div class="in">
+  <h2>About</h2>
+  <div class="about-body"><div><p>Videoclipes desde 2017. Publicidade desde 2019</p><p class="m"> Motion designer e montador em São Paulo. </p></div>
+  <!-- FOTO: a imagem é definida em FOTO_SRC, no bloco CONFIGURAÇÃO (no <script>) -->
+  <div class="foto"><div class="foto-in"><img id="foto-img" alt="André Ávila" hidden><canvas class="tex"></canvas></div></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="in">
+  <h2>Contact</h2>
+  <div><p>Vamos conversar?</p><div class="links"><a href="mailto:contato@exemplo.com">andre@avila.mov</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Vimeo</a><a href="#">X</a></div></div>
+</div></section>
+
+<footer><span>André Ávila • Todos os direitos reservados</span><a href="#top">↑ Voltar ao topo</a></footer>
+<div class="modal" id="modal"><button class="mx" id="mx" aria-label="Fechar">×</button><div class="box">
+<iframe id="frame" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+<a class="top" href="#top" aria-label="Voltar ao topo">↑</a>
+
+<script>
+// ===== CONFIGURAÇÃO: edite só esta parte =====
+var LOGO_SRC = "media/logo.png";   // SEU LOGO no topo (PNG transparente ou SVG). Aparece com 46px de altura; exporte com 140px de altura
+var FOTO_SRC = "media/foto.jpg";   // SUA FOTO na seção About (proporção 4:5, ex.: 900×1125px)
+var VIDEO_SRC = "media/banner.mp4";   // vídeo de fundo do banner, ex: "media/banner.mp4"
+var TEX_PERIOD = 2;  // tamanho do pixel da textura (maior = mais grosso)
+var DEMOREEL  = "https://player.vimeo.com/video/1234570077?h=ba90bd16ae&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"  // link de embed, ex: "https://player.vimeo.com/video/123456789"
+var PROJETOS = [
+  // { titulo:"Nome", funcao:"Edição", ano:2026, thumb:"media/p01.jpg", video:"https://www.youtube.com/embed/ID" },
+  {titulo:"Projeto 01", funcao:"Edição", ano:2026, thumb:"", video:""},
+  {titulo:"Projeto 02", funcao:"Edição", ano:2026, thumb:"", video:""},
+  {titulo:"Projeto 03", funcao:"Edição e Motion", ano:2026, thumb:"", video:""},
+  {titulo:"Projeto 04", funcao:"Edição", ano:2026, thumb:"", video:""},
+  {titulo:"Projeto 05", funcao:"Finalização", ano:2026, thumb:"", video:""},
+  {titulo:"Projeto 06", funcao:"Edição", ano:2026, thumb:"", video:""}
+];
+// =============================================
+var modal = document.getElementById("modal"), frame = document.getElementById("frame");
+function abrir(src){
+  if (!src) return;
+  frame.src = src + (src.indexOf("?") < 0 ? "?" : "&") + "autoplay=1";
+  modal.classList.add("open");
+}
+function fechar(){ modal.classList.remove("open"); frame.src = ""; }
+document.getElementById("mx").onclick = fechar;
+modal.addEventListener("click", function(e){ if (e.target === modal) fechar(); });
+document.addEventListener("keydown", function(e){ if (e.key === "Escape") fechar(); });
+document.getElementById("demo").addEventListener("click", function(e){
+  e.preventDefault();
+  if (DEMOREEL) abrir(DEMOREEL); else document.getElementById("work").scrollIntoView();
+});
+var wrap = document.getElementById("reel");
+PROJETOS.forEach(function(p,i){
+  var a = document.createElement("a"); a.className = "card"; a.href = "#";
+  var bg = p.thumb ? ' style="background:url(\''+p.thumb+'\') center/cover"' : "";
+  a.innerHTML = '<div class="th"'+bg+'><canvas class="tex"></canvas><div class="cap"><h3>'+p.titulo+'</h3><p>'+p.funcao+' • '+p.ano+'</p></div></div>';
+  a.addEventListener("click", function(e){ e.preventDefault(); abrir(p.video); });
+  wrap.appendChild(a);
+});
+var vid = document.getElementById("vid");
+function setVideo(src){
+  vid.src = src; vid.muted = true;
+  vid.play().then(function(){ vid.style.display = "block"; document.querySelector(".ph").style.display = "none"; }).catch(function(){});
+}
+if (VIDEO_SRC) setVideo(VIDEO_SRC);
+
+// Logo e foto: só aparecem se o arquivo existir (senão ficam o "AA" e o quadro vazio)
+function usarImagem(img, src, ok){
+  if (!src) return;
+  img.onload = function(){ img.hidden = false; if (ok) ok(); };
+  img.src = src;
+}
+usarImagem(document.getElementById("logo-img"), LOGO_SRC, function(){ document.getElementById("logo-fallback").style.display = "none"; });
+usarImagem(document.getElementById("foto-img"), FOTO_SRC);
+
+// Textura de pixel desenhada em pixels reais da tela (evita padrão xadrez em zooms/escalas quebradas)
+function px(r,g,b,a){ return ((a<<24)|(b<<16)|(g<<8)|r)>>>0; }
+function paint(cv){
+  var dpr = window.devicePixelRatio || 1, r = cv.getBoundingClientRect();
+  var w = Math.max(1, Math.round(r.width*dpr)), h = Math.max(1, Math.round(r.height*dpr));
+  if (cv.width === w && cv.height === h && cv._d === dpr) return;
+  cv.width = w; cv.height = h; cv._d = dpr;
+  var P = Math.max(2, Math.round(TEX_PERIOD*dpr)), m = P >> 1;
+  var c = cv.getContext("2d"), img = c.createImageData(w, h), d = new Uint32Array(img.data.buffer);
+  var base = px(255,255,255,8), line = px(0,0,0,34), cross = px(0,0,0,60);
+  for (var y = 0; y < h; y++) {
+    var ly = (y % P) === m, o = y*w;
+    for (var x = 0; x < w; x++) {
+      var lx = (x % P) === m;
+      d[o+x] = ly && lx ? cross : (ly || lx ? line : base);
+    }
+  }
+  c.putImageData(img, 0, 0);
+}
+function paintAll(){ document.querySelectorAll("canvas.tex").forEach(paint); }
+window.addEventListener("resize", paintAll);
+if (window.ResizeObserver) new ResizeObserver(paintAll).observe(document.body);
+requestAnimationFrame(paintAll);
+</script>
+</body>
+</html>
