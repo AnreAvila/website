@@ -208,7 +208,8 @@ desenhar();
 var vid = document.getElementById("vid");
 function setVideo(src){
   vid.src = src; vid.muted = true;
-  vid.addEventListener("playing", function(){ vid.classList.add("on"); }, { once: true });
+	  vid.addEventListener("playing", function(){ vid.classList.add("on"); document.querySelector(".ph").style.display = "none"; }, { once: true });  
+	
   vid.play().catch(function(){});
 }
 if (VIDEO_SRC) setVideo(VIDEO_SRC);
